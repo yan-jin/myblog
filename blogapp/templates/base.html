@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache,no-store, must-revalidate"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="{% static 'css/yanj.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Rochester|Reem+Kufi" rel="stylesheet">
+    <title>YAN</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-4 col-sidebar">
+            <div class="sidebar">
+                <div class="sidebar-logo">
+                    <h1><a href="/"> YAN</a></h1>
+                </div>
+                <div class="sidebar-about">
+                    <p>I'm <strong>Yan Jin</strong>, an undergraduate student at Peking University.</p>
+                </div>
+                <nav class="sidebar-nav">
+                    <ul class="list-unstyled contact-nav">
+                        <li>QQ: 1025240120</li>
+                        <li>Email: yj-17@pku.edu.cn</li>
+                    </ul>
+                    <ul class="list-unstyled external-nav">
+                        <li><a href="https://github.com/yan-jin" target="_blank">GitHub</a></li>
+                        <li><a href="/hole">PKU Hole Analysis</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="col-12 col-md">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

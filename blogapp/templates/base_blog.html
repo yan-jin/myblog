@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="blog">
+		<h1 class="post-title">{{blog.title}}</h1>
+		<p class="post-author">Author: {{blog.author}}</p>
+		<div class="post-body">
+			{{blog.text|safe}}
+			{% if blog.img.all %}
+			<h2 style="color: rgb(255,255,255)">Pictures</h2>
+			{% for img in blog.img.all %}
+			<p class="post-picture">
+				<img src="{{ MEDIA_URL }}{{ img.picture }}" class="project-screenshot">
+				<p class="pic-name">Pic.{{forloop.counter}}:  {{ img.name }}</p>
+			</p>
+			{% endfor %}
+			{% endif %}
+			{% if blog.github %}
+			<a href="{{blog.github}}" target="_blank">Github link</a>
+			{% endif %}
+		</div>
+		{% if blog.published_date %}
+		<p class="post-date" style="font-size: 0.6em;">{{blog.published_date}} Published<br>
+		{% endif %}
+		{% if blog.created_date and blog.created_date != blog.published_date%}
+		{{blog.created_date}} Created
+		{% endif %}
+		</p>
+	</article>
+</div>
+{% endblock %}
