@@ -4,7 +4,7 @@ import requests
 import datetime
 import json
 import pytz
-import blogapp.text_analysis as ta
+import blogapp.nlp as ta
 
 from blogapp.models import Hole, HoleComment
 
@@ -192,7 +192,7 @@ def get_text(date):
         return None
 
 
-def get_new_data():
+def get_new_hole_data():
     posts = []
     date = ''
     text = ''
@@ -285,9 +285,32 @@ def get_week_heat_data():
     json_data['xAxis'] = [i for i in range(0, 24)]
     json_data['yAxis'] = sorted([d for d in data.keys()])
     json_data['data'] = []
-    3
     for x in range(0, 7):
         for y in range(0, 24):
             json_data['data'].append([x, y, data[json_data['yAxis'][x]][y]])
     with open('/Users/yanjin/PycharmProjects/web-projects/myblog/blogapp/templates/week_heat.json', 'w') as f:
         json.dump(json_data, f)
+
+
+def get_canteen_data():
+    url = 'http://162.105.127.2:81/canteen/dat/hotpoints_canteen.his'
+    data = eval('[' + requests.get(url).text.replace('\n', '') + ']')[1:721]
+
+    path = '/home/yanjin/myblog-master/blogapp/templates/canteen.json'
+
+    if not os.path.exists(path):
+        with open(path, 'w') as f:
+            json.dump([['TIMESTAMP', 'ChangChunYuan', 'NongYuan', 'ShaoYuan', 'TongYuan', 'WanLiu', 'XueWu', 'XueYi',
+                        'YanNan', 'YiYuan']], f, ensure_ascii=False)
+
+    with open(path, 'r') as f:
+        old_data = json.load(f)
+
+    data = old_data + data
+
+    with open(path, 'w') as f:
+        json.dump(data, f)
+
+    date = data[-1][0]
+    print('{} Finished updating canteen data, latest data: {}'.format(
+        datetime.datetime.now().strftime("%Y.%m.%d %H:%M:%S"), date))
