@@ -8,15 +8,13 @@
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
     <script type="text/javascript"
             src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
     <script type="text/javascript"
             src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
     <script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/echarts-wordcloud.js' %}"></script>
 </head>
 <body style="height: 100%; margin: 0;background-color: rgb(34,34,34);">
 
@@ -86,8 +84,9 @@
     </form>
 </div>
 <div id="q-word" style="height: 60%;margin-left:5%;margin-right:5%"></div>
-<script type="text/javascript" src="{% static 'js/q_word.js' %}"></script>
-<HR width="100%" color=rgb(238,238,238) SIZE=3>
 
+<div id="word-cloud" style="height: 100%;"></div>
+<HR width="100%" color=rgb(238,238,238) SIZE=3>
+<script type="text/javascript" src="{% static 'js/q_word.js' %}"></script>
 </body>
 </html>

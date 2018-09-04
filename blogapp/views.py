@@ -7,6 +7,7 @@ import markdown
 import pytz
 from collections import Counter
 import json
+import blogapp.nlp as nlp
 
 
 def index(request):
@@ -37,6 +38,10 @@ def heat_plot(request):
 
 def week_heat(request):
     return render(request, 'week_heat.json')
+
+
+def cloud(request):
+    return render(request, 'cloud_demo.html')
 
 
 def q_word(request):
@@ -75,7 +80,8 @@ def q_word(request):
         c[k] /= date_cnt[k]
 
     json_index = [c[d] for d in json_date]
+    json_keywords = nlp.get_relative(word, time_range=time_range, cmt_flag=cmt_flag, num=300)
 
     # data = json.dumps({'date': json_date, 'index': json_index, 'num': json_num})
     # return HttpResponse(data)
-    return JsonResponse({'date': json_date, 'index': json_index, 'num': json_num})
+    return JsonResponse({'date': json_date, 'index': json_index, 'num': json_num, 'keywords': json_keywords})

@@ -415,6 +415,8 @@ var resizeContainer = function () {
     dom3.style.height = window.innerHeight * 0.8+'px';
     dom4.style.width = window.innerWidth+'px';
     dom4.style.height = window.innerHeight * 0.8+'px';
+    dom5.style.width = window.innerWidth+'px';
+    dom5.style.height = window.innerHeight * 0.8+'px';
 };
 //用于使chart自适应高度和宽度
 window.onresize = function () {
@@ -424,4 +426,5 @@ window.onresize = function () {
     myChart2.resize();
     myChart3.resize();
     myChart4.resize();
+    myChart5.resize();
 };
