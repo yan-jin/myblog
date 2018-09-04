@@ -170,7 +170,14 @@ option = {
     }]
 };
 myChart.setOption(option);
-myChart.showLoading();
+myChart.showLoading(
+    {
+      text: 'loading',
+      color: '#c23531',
+      textColor: '#eeeeee',
+      maskColor: 'rgba(255, 255, 255, 0)',
+      zlevel: 0
+});
 $.get('http://127.0.0.1:8000/hole/api/heat-plot').done(function(json_data){
     data = JSON.parse(json_data);
     myChart.hideLoading();
@@ -264,7 +271,14 @@ option2 = {
 
 myChart2.setOption(option2);
 
-myChart2.showLoading();
+myChart2.showLoading(
+    {
+      text: 'loading',
+      color: '#c23531',
+      textColor: '#eeeeee',
+      maskColor: 'rgba(255, 255, 255, 0)',
+      zlevel: 0
+});
 $.get('http://127.0.0.1:8000/hole/api/heat-plot').done(function(json_data){
     data = JSON.parse(json_data);
     date_ = [];
@@ -379,7 +393,14 @@ option3 = {
     }]
 };
 myChart3.setOption(option3, true);
-myChart3.showLoading();
+myChart3.showLoading(
+    {
+      text: 'loading',
+      color: '#c23531',
+      textColor: '#eeeeee',
+      maskColor: 'rgba(255, 255, 255, 0)',
+      zlevel: 0
+});
 
 $.get('http://127.0.0.1:8000/hole/api/week-heat').done(function(json_data){
     data = JSON.parse(json_data);

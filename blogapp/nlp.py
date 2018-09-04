@@ -11,7 +11,7 @@ import re
 
 
 def get_freq(data):
-    with open('stopwords.txt', 'r') as f:
+    with open('/Users/yanjin/PycharmProjects/web-projects/myblog/blogapp/stopwords.txt', 'r') as f:
         stop_words = f.read().splitlines()
     lst = jieba.cut(data, cut_all=False)
     print('cut done')
@@ -63,6 +63,6 @@ def get_relative(keywd, time_range='', cmt_flag='', num=100):
             if keywd in cmt.text:
                 text += re.sub(rg2, '', re.sub(rg, '', cmt.text, 1), 1)
     jieba.add_word(keywd)
-    jieba.analyse.set_stop_words('stopwords.txt')
+    jieba.analyse.set_stop_words('/Users/yanjin/PycharmProjects/web-projects/myblog/blogapp/stopwords.txt')
     tags = dict(jieba.analyse.extract_tags(text, topK=num, withWeight=True))
     return tags

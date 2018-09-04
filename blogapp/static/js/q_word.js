@@ -176,7 +176,7 @@ $("#q-word-btn").click(function(){
     });
 
 });
-$("#q-word-type1").click(function(){
+$("#q-word-type2").click(function(){
     if(dates){
         myChart4.setOption({
                     series: [{
@@ -186,7 +186,7 @@ $("#q-word-type1").click(function(){
                 });
         }
 });
-$("#q-word-type2").click(function(){
+$("#q-word-type1").click(function(){
     if(dates){
         myChart4.setOption({
                     series: [{
@@ -195,6 +195,15 @@ $("#q-word-type2").click(function(){
                     }]
                 });
         }
+});
+
+$(function(){
+    $('#q-word-text').bind('keypress',function(event){
+        if(event.keyCode == "13")
+        {
+        	$('#q-word-btn').click();
+        }
+    });
 });
 option4 = {
     textStyle: {
@@ -279,6 +288,7 @@ myChart4.setOption(option4, true);
 myChart5.on('click', function (params) {
     if (params.componentType === 'series') {
         var text = params.name;
+        document.getElementById('q-word-text').value = text;
         var date = new Date();
         date.setDate(date.getDate()-3);
         var cmt = document.getElementById('q-word-cmt').checked;
