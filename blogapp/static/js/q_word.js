@@ -368,3 +368,45 @@ myChart5.on('click', function (params) {
     }
 
 });
+
+
+
+  $( function() {
+    $("#q-word-text")
+      .bind( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).data( "ui-autocomplete" ).menu.active ) {
+          event.preventDefault();
+        }
+        if(event.keyCode == 13){
+        $('#q-word-btn').click();
+        $('#q-word-text').blur();
+        }
+      })
+    .autocomplete({
+          minLength: 2,  //满足搜索的最小长度
+          source: function( request, response ) {
+          var url = 'http://127.0.0.1:8000/hole/api/q-word/?tips=1&q=' + $("#q-word-text").val();
+          $.get(url).done(function (data) {
+              tips = data['tips'];
+              if(tips != null){
+                  response(tips);
+              }
+              });
+          },
+            // 从autocomplete弹出菜单选择一个值时，加到输入框
+            select: function(event, ui) {
+            var origEvent = event;
+            while (origEvent.originalEvent !== undefined){
+                origEvent = origEvent.originalEvent;
+            }
+            //console.info('Event type = ' + origEvent.type);
+            //console.info('ui.item.value = ' + ui.item.value);
+            if (origEvent.type == 'click'){
+                document.getElementById('q-word-text').value = ui.item.value;
+                document.getElementById('q-word-btn').click();
+            }
+            return false;
+            }
+          });
+  } );

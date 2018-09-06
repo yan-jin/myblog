@@ -20,6 +20,12 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
+import os
+import django
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myblog.settings")
+os.environ.update({"DJANGO_SETTINGS_MODULE": "config.settings"})
+django.setup()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

@@ -4,15 +4,8 @@ import requests
 import datetime
 import json
 import pytz
-import blogapp.nlp as ta
 
 from blogapp.models import Hole, HoleComment
-
-import django
-import os
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myblog.settings")
-django.setup()
 
 
 class Comment(object):

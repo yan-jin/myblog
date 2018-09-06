@@ -1,13 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Hole, HoleComment
-from django.utils import timezone
 from django.shortcuts import render_to_response
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 import markdown
 import pytz
 from collections import Counter
-import json
 import blogapp.nlp as nlp
+import gensim
 
 
 def index(request):
@@ -48,6 +47,17 @@ def q_word(request):
     word = request.GET.get('q')
     cmt_flag = request.GET.get('cmt', '')
     time_range = request.GET.get('time_range', '')
+    tip_flag = request.GET.get('tips', '')
+    if tip_flag == '1':
+        try:
+            model = gensim.models.Word2Vec.load('/Users/yanjin/PycharmProjects/web-projects/myblog/blogapp/holes_corpus.model')
+            result = model.most_similar(word)
+        except:
+            return JsonResponse({'tips': None, 'q': word})
+        tips = []
+        for r in result:
+            tips.append(r[0])
+        return JsonResponse({'tips': tips})
     if time_range != '':
         time_range = eval(time_range)
         time_range[0] += ' 00:00:00+08:00'
