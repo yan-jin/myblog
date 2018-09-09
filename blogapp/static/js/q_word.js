@@ -22,9 +22,9 @@ function get_word_cloud_data(keywords){
 var maskImage = new Image();
 var option5 = {
     textStyle: {
-        color: '#eeeeee'
+        color: '#ffffff'
     },
-    backgroundColor: '#222222',
+    backgroundColor: rgba(27, 31, 34, 0.85),
     series: [ {
         type: 'wordCloud',
         sizeRange: [15, 100],
@@ -45,7 +45,7 @@ var option5 = {
             },
             emphasis: {
                             shadowBlur: 5,
-                            shadowColor: '#eeeeee'
+                            shadowColor: '#ffffff'
                         }
         },
         data: [],
@@ -81,7 +81,7 @@ $("#q-word-btn").click(function(){
     var time;
     for(var i = 0; i < times.length; i++){
         if(times[i].checked){
-            time = i;
+            time = i + 1;
             break;
         }
     }
@@ -129,7 +129,7 @@ $("#q-word-btn").click(function(){
         {
           text: 'loading',
           color: '#c23531',
-          textColor: '#eeeeee',
+          textColor: '#ffffff',
           maskColor: 'rgba(255, 255, 255, 0)',
           zlevel: 0
     });
@@ -137,7 +137,7 @@ $("#q-word-btn").click(function(){
         {
           text: 'loading',
           color: '#c23531',
-          textColor: '#eeeeee',
+          textColor: '#ffffff',
           maskColor: 'rgba(255, 255, 255, 0)',
           zlevel: 0
     });
@@ -207,9 +207,9 @@ $(function(){
 });
 option4 = {
     textStyle: {
-        color: '#eeeeee'
+        color: '#ffffff'
     },
-    backgroundColor: '#222222',
+    backgroundColor: rgba(27, 31, 34, 0.85),
     tooltip: {
         trigger: 'axis',
         position: function (pt) {
@@ -296,7 +296,7 @@ myChart5.on('click', function (params) {
         var time;
         for(var i = 0; i < times.length; i++){
             if(times[i].checked){
-                time = i;
+                time = i + 1;
                 break;
             }
         }
@@ -320,7 +320,7 @@ myChart5.on('click', function (params) {
         {
           text: 'loading',
           color: '#c23531',
-          textColor: '#eeeeee',
+          textColor: '#ffffff',
           maskColor: 'rgba(255, 255, 255, 0)',
           zlevel: 0
     });
@@ -328,7 +328,7 @@ myChart5.on('click', function (params) {
         {
           text: 'loading',
           color: '#c23531',
-          textColor: '#eeeeee',
+          textColor: '#ffffff',
           maskColor: 'rgba(255, 255, 255, 0)',
           zlevel: 0
     });

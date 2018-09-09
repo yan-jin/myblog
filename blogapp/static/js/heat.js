@@ -2,14 +2,10 @@
 var dom = document.getElementById("heat-calender-plot");
 var myChart = echarts.init(dom, 'dark');
 option = {
-    title: {
-        left: 'center',
-        text: '2014-2018年树洞活跃度'
-    },
     textStyle: {
-        color: '#eeeeee'
+        color: '#ffffff'
     },
-    backgroundColor: '#222222',
+    backgroundColor: rgba(27, 31, 34, 0.85),
     tooltip : {
        position: 'top',
         formatter: function (p) {
@@ -40,10 +36,10 @@ option = {
         yearLabel: {show: true},
         orient: 'vertical',
         dayLabel: {
-        color: '#eeeeee'
+        color: '#ffffff'
         },
         monthLabel: {
-        color: '#eeeeee',
+        color: '#ffffff',
         show: false
         }
     },
@@ -61,10 +57,10 @@ option = {
         yearLabel: {show: true},
         orient: 'vertical',
         dayLabel: {
-        color: '#eeeeee'
+        color: '#ffffff'
         },
         monthLabel: {
-        color: '#eeeeee',
+        color: '#ffffff',
         show: false
         }
     },
@@ -82,10 +78,10 @@ option = {
         yearLabel: {show: true},
         orient: 'vertical',
         dayLabel: {
-        color: '#eeeeee'
+        color: '#ffffff'
         },
         monthLabel: {
-        color: '#eeeeee',
+        color: '#ffffff',
         show: false
         }
     },
@@ -103,10 +99,10 @@ option = {
         yearLabel: {show: true},
         orient: 'vertical',
         dayLabel: {
-        color: '#eeeeee'
+        color: '#ffffff'
         },
         monthLabel: {
-        color: '#eeeeee',
+        color: '#ffffff',
         show: false
         }
     },
@@ -124,10 +120,10 @@ option = {
         yearLabel: {show: true},
         orient: 'vertical',
         dayLabel: {
-        color: '#eeeeee'
+        color: '#ffffff'
         },
         monthLabel: {
-        color: '#eeeeee',
+        color: '#ffffff',
         show: false
         }
     }],
@@ -174,7 +170,7 @@ myChart.showLoading(
     {
       text: 'loading',
       color: '#c23531',
-      textColor: '#eeeeee',
+      textColor: '#ffffff',
       maskColor: 'rgba(255, 255, 255, 0)',
       zlevel: 0
 });
@@ -214,14 +210,10 @@ var myChart2 = echarts.init(dom2, 'dark');
 var app2 = {};
 
 option2 = {
-    title: {
-        text: '2014-2018树洞热度柱状图',
-        left: 'center',
-    },
     textStyle: {
-        color: '#eeeeee'
+        color: '#ffffff'
     },
-    backgroundColor: '#222222',
+    backgroundColor: rgba(27, 31, 34, 0.85),
     toolbox: {
         feature: {
             dataZoom: {
@@ -275,7 +267,7 @@ myChart2.showLoading(
     {
       text: 'loading',
       color: '#c23531',
-      textColor: '#eeeeee',
+      textColor: '#ffffff',
       maskColor: 'rgba(255, 255, 255, 0)',
       zlevel: 0
 });
@@ -309,16 +301,10 @@ var myChart3 = echarts.init(dom3,'dark');
 var app3 = {};
 
 option3 = {
-       title: {
-        text: '最近一周树洞热度逐小时图',
-        left: 'center',
-        top: '5%'
-    },
-
     textStyle: {
-        color: '#eeeeee'
+        color: '#ffffff'
     },
-    backgroundColor: '#222222',
+    backgroundColor: rgba(27, 31, 34, 0.85),
 
     visualMap: {
         max: 120,
@@ -330,23 +316,23 @@ option3 = {
         name: 'Time',
         type: 'category',
         data: [],
-        nameTextStyle: {color: '#eeeeee'},
-        axisLabel:{textStyle: {color: '#eeeeee'}},
+        nameTextStyle: {color: '#ffffff'},
+        axisLabel:{textStyle: {color: '#ffffff'}},
 
     },
     yAxis3D: {
         name: 'Date',
         type: 'category',
         data: [],
-        nameTextStyle: {color: '#eeeeee'},
-        axisLabel:{textStyle: {color: '#eeeeee'}},
+        nameTextStyle: {color: '#ffffff'},
+        axisLabel:{textStyle: {color: '#ffffff'}},
 
     },
     zAxis3D: {
         name: 'Num',
         type: 'value',
-        nameTextStyle: {color: '#eeeeee'},
-        axisLabel:{textStyle: {color: '#eeeeee'}},
+        nameTextStyle: {color: '#ffffff'},
+        axisLabel:{textStyle: {color: '#ffffff'}},
     },
     grid3D: {
         boxWidth: 200,
@@ -371,7 +357,7 @@ option3 = {
             textStyle: {
                 fontSize: 16,
                 borderWidth: 1,
-                color: '#eeeeee'
+                color: '#ffffff'
             }
         },
 
@@ -397,7 +383,7 @@ myChart3.showLoading(
     {
       text: 'loading',
       color: '#c23531',
-      textColor: '#eeeeee',
+      textColor: '#ffffff',
       maskColor: 'rgba(255, 255, 255, 0)',
       zlevel: 0
 });

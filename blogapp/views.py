@@ -7,6 +7,7 @@ import pytz
 from collections import Counter
 import blogapp.nlp as nlp
 import gensim
+import json
 
 
 def index(request):
@@ -53,7 +54,13 @@ def q_word(request):
             model = gensim.models.Word2Vec.load('/Users/yanjin/PycharmProjects/web-projects/myblog/blogapp/holes_corpus.model')
             result = model.most_similar(word)
         except:
-            return JsonResponse({'tips': None, 'q': word})
+            with open('/Users/yanjin/PycharmProjects/web-projects/myblog/blogapp/bbs_words_relative.json', 'r') as f:
+                data = json.load(f)
+            try:
+                tips = [w[0] for w in data[word]]
+            except:
+                return JsonResponse({'tips': None, 'q': word})
+            return JsonResponse({'tips': tips})
         tips = []
         for r in result:
             tips.append(r[0])
