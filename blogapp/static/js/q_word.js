@@ -1,10 +1,10 @@
 var dom4 = document.getElementById("q-word");
-var myChart4 = echarts.init(dom4, 'dark');
+var myChart4 = echarts.init(dom4);
 var app = {};
 option4 = null;
 
 var dom5 = document.getElementById("word-cloud");
-var myChart5 = echarts.init(dom5, 'dark');
+var myChart5 = echarts.init(dom5);
 var app = {};
 option5 = null;
 
@@ -24,7 +24,7 @@ var option5 = {
     textStyle: {
         color: '#ffffff'
     },
-    backgroundColor: rgba(27, 31, 34, 0.85),
+    //backgroundColor: 'rgba(255,255,255,0)',
     series: [ {
         type: 'wordCloud',
         sizeRange: [15, 100],
@@ -37,9 +37,9 @@ var option5 = {
             normal: {
                 color: function () {
                     return 'rgb(' + [
-                        Math.round(Math.random() * 160 + 95),
-                        Math.round(Math.random() * 160 + 95),
-                        Math.round(Math.random() * 160 + 95)
+                        Math.round(Math.random() * 180 + 75),
+                        Math.round(Math.random() * 180 + 75),
+                        Math.round(Math.random() * 180 + 75)
                     ].join(',') + ')';
                 }
             },
@@ -152,14 +152,11 @@ $("#q-word-btn").click(function(){
             case 1: d = index;break;
         }
         myChart4.setOption({
-            title: {
-            text: '树洞指数: ' + text,
-        },
             xAxis: {
                   data: dates,
             },
             series: [{
-                name: type==0?'数量':'指数',
+                name: type==0?'Num':'Index',
                 data: d
             }]
         });
@@ -180,7 +177,7 @@ $("#q-word-type2").click(function(){
     if(dates){
         myChart4.setOption({
                     series: [{
-                        name: '指数',
+                        name: 'Index',
                         data: index
                     }]
                 });
@@ -190,7 +187,7 @@ $("#q-word-type1").click(function(){
     if(dates){
         myChart4.setOption({
                     series: [{
-                        name: '数量',
+                        name: 'Num',
                         data: num
                     }]
                 });
@@ -209,16 +206,12 @@ option4 = {
     textStyle: {
         color: '#ffffff'
     },
-    backgroundColor: rgba(27, 31, 34, 0.85),
+    //backgroundColor: 'rgba(255,255,255,0)',
     tooltip: {
         trigger: 'axis',
         position: function (pt) {
             return [pt[0], '10%'];
         }
-    },
-    title: {
-        left: 'center',
-        text: '树洞指数',
     },
     toolbox: {
         feature: {
@@ -344,13 +337,13 @@ myChart5.on('click', function (params) {
             }
             myChart4.setOption({
                 title: {
-                text: '树洞指数: ' + text,
+                text: 'Index: ' + text,
             },
                 xAxis: {
                       data: dates,
                 },
                 series: [{
-                    name: type==0?'数量':'指数',
+                    name: type==0?'Num':'Index',
                     data: d
                 }]
             });

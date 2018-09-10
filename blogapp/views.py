@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Hole, HoleComment
 from django.shortcuts import render_to_response
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import markdown
 import pytz
 from collections import Counter
@@ -29,7 +29,7 @@ def page_not_found(request):
 
 
 def hole(request):
-    return render(request, 'hole.html')
+    return render(request, 'pkuhole.html')
 
 
 def heat_plot(request):
@@ -40,8 +40,8 @@ def week_heat(request):
     return render(request, 'week_heat.json')
 
 
-def cloud(request):
-    return render(request, 'cloud_demo.html')
+def hole_bg(request):
+    return HttpResponse(open("/Users/yanjin/PycharmProjects/web-projects/myblog/blogapp/templates/PKU-background.jpg", "rb"), content_type="image/jpg")
 
 
 def q_word(request):
@@ -51,7 +51,8 @@ def q_word(request):
     tip_flag = request.GET.get('tips', '')
     if tip_flag == '1':
         try:
-            model = gensim.models.Word2Vec.load('/Users/yanjin/PycharmProjects/web-projects/myblog/blogapp/holes_corpus.model')
+            model = gensim.models.Word2Vec.load(
+                '/Users/yanjin/PycharmProjects/web-projects/myblog/blogapp/holes_corpus.model')
             result = model.most_similar(word)
         except:
             with open('/Users/yanjin/PycharmProjects/web-projects/myblog/blogapp/bbs_words_relative.json', 'r') as f:

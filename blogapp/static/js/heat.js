@@ -1,11 +1,11 @@
 
 var dom = document.getElementById("heat-calender-plot");
-var myChart = echarts.init(dom, 'dark');
+var myChart = echarts.init(dom);
 option = {
     textStyle: {
         color: '#ffffff'
     },
-    backgroundColor: rgba(27, 31, 34, 0.85),
+    //backgroundColor: 'rgba(255,255,255,0)',
     tooltip : {
        position: 'top',
         formatter: function (p) {
@@ -206,14 +206,14 @@ $.get('http://127.0.0.1:8000/hole/api/heat-plot').done(function(json_data){
 //CHART 2
 
 var dom2 = document.getElementById("heat-bar-plot");
-var myChart2 = echarts.init(dom2, 'dark');
+var myChart2 = echarts.init(dom2);
 var app2 = {};
 
 option2 = {
     textStyle: {
         color: '#ffffff'
     },
-    backgroundColor: rgba(27, 31, 34, 0.85),
+    //backgroundColor: 'rgba(255,255,255,0)',
     toolbox: {
         feature: {
             dataZoom: {
@@ -297,14 +297,14 @@ $.get('http://127.0.0.1:8000/hole/api/heat-plot').done(function(json_data){
 //CHART 3
 
 var dom3 = document.getElementById("week-heat");
-var myChart3 = echarts.init(dom3,'dark');
+var myChart3 = echarts.init(dom3);
 var app3 = {};
 
 option3 = {
     textStyle: {
         color: '#ffffff'
     },
-    backgroundColor: rgba(27, 31, 34, 0.85),
+    //backgroundColor: 'rgba(255,255,255,0)',
 
     visualMap: {
         max: 120,

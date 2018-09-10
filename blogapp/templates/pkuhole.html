@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<html>
+	<head>
+		<title>PKU Hole</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'css/hole_main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'css/noscript.css' %}" /></noscript>
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+	    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+	    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+	    <script type="text/javascript"
+	            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+	    <script type="text/javascript"
+	            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+	    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+	    <link rel="stylesheet" href="http://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+
+	    <script type="text/javascript" src="{% static 'js/echarts-wordcloud.js' %}"></script>
+	    <style type="text/css">
+	        .ui-autocomplete {
+			    position: absolute;
+			    top: 100%;
+			    left: 0;
+			    z-index: 1000;
+			    float: left;
+			    display: none;
+			    min-width: 160px;
+			    padding: 4px 0;
+			    margin: 0 0 10px 25px;
+			    list-style: none;
+			    background-color: #ffffff;
+			    border-color: #ccc;
+			    border-color: rgba(0, 0, 0, 0.2);
+			    border-style: solid;
+			    border-width: 1px;
+			    -webkit-border-radius: 5px;
+			    -moz-border-radius: 5px;
+			    border-radius: 5px;
+			    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			    -webkit-background-clip: padding-box;
+			    -moz-background-clip: padding;
+			    background-clip: padding-box;
+			    *border-right-width: 2px;
+			    *border-bottom-width: 2px;
+			}
+	
+			.ui-autocomplete-loading {
+				background-color: #ffffff;
+	  		}
+	
+	  		}
+	    </style>
+	
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-leaf"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>PKU Hole</h1>
+								<p>A data analysis platform for PKU Hole.</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#heatmap">Heatmap</a></li>
+								<li><a href="#overall_activity">Overall Activity</a></li>
+								<li><a href="#activity_in_week">Activity In Week</a></li>
+								<li><a href="#index">Index</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Heatmap -->
+							<article id="heatmap">
+								<h2 class="major">Heatmap</h2>
+								<div id="heat-calender-plot"></div>
+							</article>
+
+						<!-- Overall Activity -->
+							<article id="overall_activity">
+								<h2 class="major">Overall Activity</h2>
+								<div id="heat-bar-plot"></div>
+							</article>
+
+						<!-- Activity in Week -->
+							<article id="activity_in_week">
+								<h2 class="major">Activity in Week</h2>
+								<div id="week-heat"></div>
+							</article>
+                        <script type="text/javascript" src="{% static 'js/heat.js' %}"></script>
+
+						<!-- Index -->
+							<article id="index">
+								<h2 class="major">Index</h2>
+								<form onsubmit="return false;">
+									<div class="fields">
+										<div class="field">
+											<input type="text" name="q-word" id="q-word-text" placeholder="Keyword:">
+										</div>
+										<div class="field">
+											<input type="checkbox" id="q-word-cmt">
+											<label for="q-word-cmt">Comments</label>
+										</div>
+										<div class="field half">
+					                        <input type="radio" name="q-word-type" id="q-word-type1" value="0" checked>
+					                        <label for="q-word-type1">Number</label>
+										</div>
+										<div class="field half">
+					                        <input type="radio" name="q-word-type" id="q-word-type2" value="1">
+					                        <label for="q-word-type2">Index</label>
+										</div>
+										<div class="field fifth">
+						                    <input type="radio" name="q-word-time" id="q-word-time-week" value="1" checked>
+						                    <label for="q-word-time-week">1 week</label>
+										</div>
+										<div class="field fifth">
+						                    <input type="radio" name="q-word-time" id="q-word-time-month" value="2">
+						                    <label for="q-word-time-month">1 month</label>
+										</div>
+										<div class="field fifth">
+						                    <input type="radio" name="q-word-time" id="q-word-time-3month" value="3">
+						                    <label for="q-word-time-3month">3 months</label>
+										</div>
+						                <div class="field fifth">
+						                    <input type="radio" name="q-word-time" id="q-word-time-6month" value="4">
+						                    <label for="q-word-time-6month">6 months</label>
+										</div>
+						                <div class="field fifth">
+						                    <input type="radio" name="q-word-time" id="q-word-time-year" value="5">
+											<label for="q-word-time-year">1 year</label>
+										</div>
+										<div class="field">
+											<button type="button" id="q-word-btn">Submit</button>
+										</div>
+									</div>
+								</form>
+								<hr>
+								<div id="q-word"></div>
+								<hr>
+								<div id="word-cloud"></div>
+							</article>
+                    </div>
+                        <script type="text/javascript" src="{% static 'js/q_word.js' %}"></script>
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Design: YanJin.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+        <script src="{% static 'js/browser.min.js' %}"></script>
+        <script src="{% static 'js/breakpoints.min.js' %}"></script>
+        <script src="{% static 'js/util.js' %}"></script>
+        <script src="{% static 'js/hole_main.js' %}"></script>
+	</body>
+</html>
